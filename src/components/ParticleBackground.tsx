@@ -14,26 +14,36 @@ const ParticleBackground = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
+
+    const isDarkMode = () =>
+      document.documentElement.classList.contains("dark");
+
+    const getParticleColor = () =>
+      isDarkMode()
+        ? "45, 212, 191" 
+        : "13, 13, 13";
+
     setCanvasSize();
     window.addEventListener('resize', setCanvasSize);
 
-    const particles: Array<{
+    const particles: {
       x: number;
       y: number;
       vx: number;
       vy: number;
       size: number;
       opacity: number;
-    }> = [];
+    }[] = [];
 
-    const particleCount = 80;
+    const PARTICLE_COUNT = 180;
+    const SPEED = 1.8;
 
-    for (let i = 0; i < particleCount; i++) {
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
+        vx: (Math.random() - 0.5) * SPEED,
+        vy: (Math.random() - 0.5) * SPEED,
         size: Math.random() * 2 + 0.5,
         opacity: Math.random() * 0.5 + 0.1,
       });
@@ -41,6 +51,9 @@ const ParticleBackground = () => {
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const color = getParticleColor();
+      const opacityMultiplier = isDarkMode() ? 1 : 0.6;
 
       particles.forEach((particle, i) => {
         particle.x += particle.vx;
@@ -51,7 +64,9 @@ const ParticleBackground = () => {
 
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(45, 212, 191, ${particle.opacity})`;
+        ctx.fillStyle = `rgba(${color}, ${
+          particle.opacity * opacityMultiplier
+        })`;
         ctx.fill();
 
         // Draw connections
@@ -64,7 +79,9 @@ const ParticleBackground = () => {
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(other.x, other.y);
-            ctx.strokeStyle = `rgba(45, 212, 191, ${0.1 * (1 - distance / 150)})`;
+            ctx.strokeStyle = `rgba(${color}, ${
+              0.1 * (1 - distance / 150)
+            })`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }

@@ -7,15 +7,15 @@ const skillCategories = [
   },
   {
     title: 'Backend',
-    skills: ['Python', 'RESTful APIs', 'Node.js', 'CRUD Operations', 'API Integration'],
+    skills: ['Python', 'Laravel', 'RESTful APIs', 'Node.js', 'CRUD Operations', 'API Integration'],
   },
   {
     title: 'Tools & DevOps',
-    skills: ['Git', 'Linux Servers', 'Deployment', 'Code Review'],
+    skills: ['Git', 'Linux Servers', 'Deployment', 'WebSockets', 'Apache Kafka'],
   },
   {
     title: 'Soft Skills',
-    skills: ['Problem-Solving', 'Analytical Thinking', 'Team Collaboration', 'Time Management', 'Adaptability', 'Mentoring'],
+    skills: ['Problem-Solving', 'Analytical Thinking', 'Team Collaboration', 'Time Management', 'Adaptability', 'Continuous Learning'],
   },
 ];
 

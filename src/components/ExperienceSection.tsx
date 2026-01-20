@@ -24,10 +24,12 @@ const experiences = [
     period: 'May 2023 – June 2024',
     location: 'Internship',
     highlights: [
-      'Assisted in developing and maintaining responsive web and mobile applications using React.js and React Native.',
-      'Collaborated with cross-functional teams to implement new features, supporting a 15% increase in user engagement.',
-      'Participated in optimizing application performance, leading to a 20% improvement in load times.',
-      'Integrated RESTful APIs to fetch and display dynamic data, ensuring seamless user interactions.',
+      'SAFAR – CAB SERVICE: Developed responsive cab service web and mobile application using React.js and React Native.',
+      'Implemented real-time data updates using web sockets and Apache Kafka to track live ride status.',
+      'Integrated RESTful APIs to fetch and display live data, enabling smooth booking and user interactions.',
+      'Built reusable UI components to improve code maintainability and development speed.',
+      'Optimized application performance for faster load times and smoother navigation.',
+      'Debugged and resolved functional and UI issues across web and mobile platforms.',
     ],
   },
 ];

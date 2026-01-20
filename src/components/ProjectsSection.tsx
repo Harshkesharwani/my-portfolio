@@ -3,43 +3,46 @@ import { ExternalLink, Code, Filter, Calendar, BarChart3, Settings } from 'lucid
 
 const projects = [
   {
-    title: "Invoice Ninja",
-    subtitle: "Functional Enhancements",
-    description: "Modified and enhanced existing functionalities of the Invoice Ninja system to improve usability and performance.",
-    features: [
-      "Implemented advanced dropdown filters for faster and more accurate data selection",
-      "Optimized UI components for better user experience and smoother workflows",
-      "Worked closely with APIs to ensure correct data binding and reliable responses"
-    ],
-    skills: ["UI Enhancement", "Dropdown Filters", "API Integration", "Frontend Optimization"],
-    icon: Filter,
-    gradient: "from-blue-500 to-cyan-500"
-  },
-  {
     title: "PMD",
     subtitle: "Project Management Dashboard",
-    description: "Integrated multiple APIs to display project-specific data dynamically based on user requirements.",
+    description: "Designed and developed user-friendly UI/UX for a project management dashboard with real-time data display.",
     features: [
-      "Enhanced complex UI by restructuring layouts and improving component interactions",
-      "Improved application functionality by refining API responses and handling edge cases",
-      "Ensured accurate data rendering, filtering, and real-time updates across dashboard views"
+      "Integrated RESTful APIs to display real-time project, task, and user data",
+      "Modified and optimized APIs to improve frontend data handling",
+      "Used Git for version control, branch management, and code collaboration",
+      "Deployed frontend updates to production server and ensured smooth releases"
     ],
-    skills: ["API Integration", "Complex UI Handling", "Data Visualization", "Performance Optimization"],
+    skills: ["Vue.js", "Python", "REST APIs", "Git"],
     icon: BarChart3,
     gradient: "from-purple-500 to-pink-500"
   },
   {
     title: "EMS",
     subtitle: "Event Management System",
-    description: "Integrated backend APIs to fetch and display event data according to user-defined criteria.",
+    description: "Developed a complete module from scratch, starting from UI sketches to production deployment.",
     features: [
-      "Enhanced complex UI components to improve usability and overall system performance",
-      "Designed and implemented a custom date picker with date range selection",
-      "Optimized API data handling to ensure consistent and accurate responses"
+      "Built fully responsive user interface for cross-device compatibility",
+      "Implemented advanced search functionality for efficient data filtering",
+      "Designed custom responsive calendar with single-date, date-range, and Ctrl-key multi-date selection",
+      "Developed and modified Laravel APIs (GET, POST) for dynamic data handling"
     ],
-    skills: ["Custom Components", "Date Range Picker", "API Optimization", "UI/UX Enhancement"],
+    skills: ["Vue.js", "Laravel", "REST APIs", "Custom Calendar"],
     icon: Calendar,
     gradient: "from-orange-500 to-red-500"
+  },
+  {
+    title: "SAFAR",
+    subtitle: "Cab Service Web & Mobile App",
+    description: "Developed a responsive cab service web and mobile application ensuring consistent user experience across platforms.",
+    features: [
+      "Implemented real-time data updates using web sockets and Apache Kafka",
+      "Integrated RESTful APIs for live ride status and dynamic data changes",
+      "Built reusable UI components to improve code maintainability",
+      "Optimized application performance for faster load times"
+    ],
+    skills: ["React.js", "React Native", "Laravel", "WebSockets"],
+    icon: Filter,
+    gradient: "from-blue-500 to-cyan-500"
   }
 ];
 

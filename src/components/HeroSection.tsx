@@ -89,7 +89,7 @@ const HeroSection = () => {
               <Github size={22} />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/harsh-kesharwani-4b79ab257"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary hover:-translate-y-1 transition-all duration-300"
