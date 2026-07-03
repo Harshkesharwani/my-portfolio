@@ -1,8 +1,35 @@
-import { useEffect, useState } from 'react';
-import { Github, Linkedin, Mail, ChevronDown, Download } from 'lucide-react';
+import { useEffect, useState } from "react";
+import { Github, Linkedin, Mail, ChevronDown, Download } from "lucide-react";
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const texts = [
+    "I build things for the web.",
+    "React Developer.",
+    "React Native Developer.",
+    "Full Stack Developer.",
+  ];
+
+  const [index, setIndex] = useState(0);
+  const [text, setText] = useState("");
+  const [char, setChar] = useState(0);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (char < texts[index].length) {
+        setText((prev) => prev + texts[index][char]);
+        setChar(char + 1);
+      } else {
+        setTimeout(() => {
+          setText("");
+          setChar(0);
+          setIndex((index + 1) % texts.length);
+        }, 1500);
+      }
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [char, index]);
 
   useEffect(() => {
     setIsVisible(true);
@@ -12,12 +39,15 @@ const HeroSection = () => {
     <section className="min-h-screen flex flex-col justify-center relative overflow-hidden">
       {/* Gradient Orbs */}
       <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/20 rounded-full blur-[128px] animate-glow-pulse" />
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-accent/20 rounded-full blur-[128px] animate-glow-pulse" style={{ animationDelay: '1.5s' }} />
+      <div
+        className="absolute bottom-1/4 -right-32 w-96 h-96 bg-accent/20 rounded-full blur-[128px] animate-glow-pulse"
+        style={{ animationDelay: "1.5s" }}
+      />
 
       <div className="container mx-auto px-6 relative z-10">
         <div
           className={`max-w-4xl transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           <p className="font-mono text-primary text-sm md:text-base mb-4 animate-slide-up stagger-1">
@@ -28,14 +58,15 @@ const HeroSection = () => {
             <span className="text-foreground">Harsh Kesharwani.</span>
           </h1>
 
-          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-muted-foreground mb-6 animate-slide-up stagger-3">
-            I build things for the web.
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-muted-foreground mb-6">
+            {text}
+            <span className="text-primary animate-pulse">|</span>
           </h2>
 
           <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mb-8 leading-relaxed animate-slide-up stagger-4">
-            Full Stack Developer with{' '}
+            Full Stack Developer with{" "}
             <span className="text-primary">2 years of experience</span> in
-            building scalable web and mobile applications. Proficient in{' '}
+            building scalable web and mobile applications. Proficient in{" "}
             <span className="text-primary">React, Vue.js, React Native</span>,
             and backend technologies, I specialize in delivering seamless user
             experiences and strong application performance.
@@ -49,7 +80,9 @@ const HeroSection = () => {
                          flex items-center gap-2"
             >
               Get In Touch
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
+              <span className="group-hover:translate-x-1 transition-transform">
+                →
+              </span>
             </a>
             <a
               href="/Harsh_Kesharwani_Resume.pdf"
@@ -71,7 +104,10 @@ const HeroSection = () => {
           </div>
 
           {/* Social Links */}
-          <div className="flex items-center gap-6 animate-fade-in" style={{ animationDelay: '0.8s' }}>
+          <div
+            className="flex items-center gap-6 animate-fade-in"
+            style={{ animationDelay: "0.8s" }}
+          >
             <a
               href="mailto:Harshkesharwani2580@gmail.com"
               className="text-muted-foreground hover:text-primary hover:-translate-y-1 transition-all duration-300"
@@ -103,7 +139,10 @@ const HeroSection = () => {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <a href="#about" className="text-muted-foreground hover:text-primary transition-colors">
+        <a
+          href="#about"
+          className="text-muted-foreground hover:text-primary transition-colors"
+        >
           <ChevronDown size={32} />
         </a>
       </div>
