@@ -5,31 +5,46 @@ const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const texts = [
     "I build things for the web.",
+    "Full Stack Developer.",
     "React Developer.",
     "React Native Developer.",
-    "Full Stack Developer.",
   ];
 
-  const [index, setIndex] = useState(0);
-  const [text, setText] = useState("");
-  const [char, setChar] = useState(0);
+  const [textIndex, setTextIndex] = useState(0);
+  const [typedText, setTypedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (char < texts[index].length) {
-        setText((prev) => prev + texts[index][char]);
-        setChar(char + 1);
-      } else {
-        setTimeout(() => {
-          setText("");
-          setChar(0);
-          setIndex((index + 1) % texts.length);
-        }, 1500);
-      }
-    }, 100);
+    const currentText = texts[textIndex];
+
+    const timer = setTimeout(
+      () => {
+        // Typing characters
+        if (!isDeleting) {
+          setTypedText(currentText.substring(0, typedText.length + 1));
+          // completed typing
+          if (typedText.length === currentText.length) {
+            setTimeout(() => {
+              setIsDeleting(true);
+            }, 1500);
+          }
+        }
+
+        // Backspace characters
+        else {
+          setTypedText(currentText.substring(0, typedText.length - 1));
+          // completed deleting
+          if (typedText.length === 0) {
+            setIsDeleting(false);
+            setTextIndex((prev) => (prev + 1) % texts.length);
+          }
+        }
+      },
+      isDeleting ? 50 : 100,
+    );
 
     return () => clearTimeout(timer);
-  }, [char, index]);
+  }, [typedText, isDeleting, textIndex]);
 
   useEffect(() => {
     setIsVisible(true);
@@ -59,7 +74,7 @@ const HeroSection = () => {
           </h1>
 
           <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-muted-foreground mb-6">
-            {text}
+            {typedText}
             <span className="text-primary animate-pulse">|</span>
           </h2>
 
